@@ -3,7 +3,13 @@ pipeline {
     tools {
       nodejs 'node1'
     }
-    stages {
+    stages { 
+         stage('Checkout') {
+            steps {
+                // Clone the repository
+                git branch: 'main', url: 'https://github.com/Ayus1123/youtube-content.git'
+            }
+        }
         stage('print versions') {
           steps {
             sh 'npm version'
