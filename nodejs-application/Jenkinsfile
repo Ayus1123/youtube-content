@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-      nodejs '20.7.0'
+      nodejs 'node1'
     }
     stages {
         stage('print versions') {
@@ -21,8 +21,9 @@ pipeline {
         }
         stage('codedeploy'){
           steps {
-            step([$class: 'AWSCodeDeployPublisher', applicationName: 'nodejs-application', deploymentGroupAppspec: false, deploymentGroupName: 'nodejs-application-DG', excludes: '', iamRoleArn: '', includes: 'dist/', proxyHost: '', proxyPort: 0, region: 'ap-south-1', s3bucket: 'deploymasters-nodejs', s3prefix: '', subdirectory: '', versionFileName: '', waitForCompletion: false])
+            step([$class: 'AWSCodeDeployPublisher', applicationName: 'node-application', deploymentGroupAppspec: false, deploymentGroupName: 'nodeJs-DG', excludes: '', iamRoleArn: '', includes: 'dist/', proxyHost: '', proxyPort: 0, region: 'ap-southeast-1', s3bucket: 'jenkins1-bucket1', s3prefix: '', subdirectory: '', versionFileName: '', waitForCompletion: false])
            }
+        }
         }
     }
 }
